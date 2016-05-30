@@ -1,3 +1,4 @@
 ^.*\..*$ # all hidden directories 
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis

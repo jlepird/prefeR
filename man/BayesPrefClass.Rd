@@ -16,6 +16,8 @@ An object containing all data necessary for preference elicitation.
 
 \item{\code{sigma}}{A scalar value to use for the confusion factor (default 0.1).}
 
+\item{\code{Sigma}}{(Internal use only) A matrix of sigma * diag(ncol(data))}
+
 \item{\code{strict}}{A list of lists of preferences. For each element x, x[[1]] > x[[2]].}
 
 \item{\code{indif}}{A list of lists of indifferences. For each element x, x[[1]] = x[[2]].}
@@ -24,5 +26,7 @@ An object containing all data necessary for preference elicitation.
 
 \describe{
 \item{\code{addPref(x)}}{Adds a preference created using \%>\%, \%<\%, or \%=\%.}
+
+\item{\code{infer(estimate = "recommended")}}{Calls the ``infer'' function to guess weights}
 }}
 

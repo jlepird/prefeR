@@ -7,18 +7,18 @@
 Exp(mu)
 }
 \arguments{
-\item{mu}{The mean of the exponential distribution}
+\item{mu}{The mean of the exponential distribution, i.e. \eqn{1/rate}}
 }
 \value{
-A function yielding the PDF a x of a exponential distribution with given statistics.
+A function yielding the log-PDF a x of a exponential distribution with given statistics.
 }
 \description{
 A convinience function for generating Exponential priors
 }
 \examples{
-Exp(1)(1) == dexp(1,1)
+Exp(1)(1) == dexp(1,1, log = TRUE)
 }
 \seealso{
-Other Priors: \code{\link{Normal}}
+Other Priors: \code{\link{Flat}}, \code{\link{Normal}}
 }
 

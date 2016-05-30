@@ -1,13 +1,34 @@
-#' Calculates the log probability of a given guess for weights 
-#' @param x Our guess
-#' @param p A preference elicitation object with the data and observed preferences
-#' @examples calculateLogProb(c(1, 1.5, 1.0), p)
-#' @export
+# Internal-- calculates the log probability of seeing a given set of preferences
+.calculateLogProb <- function(x, p){
+  # For each preference stated, get the independent log-probability for it, and sum them 
+  # all to get our likelihood. vapply is like sapply but with a default return
+  stricts  <- sum(vapply(p$strict, function(pref) .getLogStrictProb(x, pref, p), 0))
+  indif    <- sum(vapply(p$indif , function(pref) .getLogIndifProb(x,  pref, p), 0))
+  
+  # For each prior/guess pair, apply the prior function
+  logPrior <- sum(mapply(function(x, prior) prior(x), x, p$priors))
+  
+  cat(x)
+  cat("\n")
+  
+  if (is.infinite(logPrior)) logPrior <- -100
+  
+  cat(paste("Return:",stricts + indif + logPrior, "\n"))
+  return(stricts + indif + logPrior)
+}
 
+.getLogStrictProb <- function(x, pref, p){
+  d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])
+  varAlongD <- t(d) %*% p$Sigma %*% d
+  meanAlongD <- x %*% d
+  return(pnorm(meanAlongD, 0, sqrt(varAlongD), log.p = T)[1])
+}
 
-calculateLogProb <- function(x, p){
-  out <- 0.0
-  
-  
-  
+.getLogIndifProb <- function(x, pref, p){
+  d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])
+  varAlongD <- t(d) %*% p$Sigma %*% d
+  meanAlongD <- x %*% d
+  sd <- sqrt(varAlongD)
+  return(log(pnorm(meanAlongD + 0.5, 0, sd) - 
+             pnorm(meanAlongD - 0.5, 0, sd))[1])
 }

@@ -5,12 +5,14 @@
 #' @field data A matrix or dataframe of data.
 #' @field priors A list of functions that give the prior on each variable.
 #' @field sigma A scalar value to use for the confusion factor (default 0.1).
+#' @field Sigma (Internal use only) A matrix of sigma * diag(ncol(data))
 #' @field strict A list of lists of preferences. For each element x, x[[1]] > x[[2]].
 #' @field indif A list of lists of indifferences. For each element x, x[[1]] = x[[2]].
 BayesPrefClass <- setRefClass("BayesPrefClass",
                      fields = c("data",
                                 "priors",
                                 "sigma",
+                                "Sigma", 
                                 "strict",
                                 "indif"), 
                      methods = list(
@@ -20,6 +22,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          data   <<- NA
                          priors <<- list()
                          sigma  <<- 0.1
+                         Sigma  <<- NA
                          strict <<- list()
                          indif  <<- list()
                          # Call super to override any defaults
@@ -64,6 +67,10 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          if ("strict" %in% class(x)) strict <<- append(strict, list(x));
                          if ("indif" %in% class(x))  indif  <<- append(indif, list(x)); return()
                          stop("Unknown input type. \nPlease create preferences using %>%, %<%, or %=%.")
+                       },
+                       infer = function(estimate = "recommended"){
+                         "Calls the ``infer'' function to guess weights" 
+                         BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
                        }
                      )
 )
@@ -74,8 +81,6 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
 #' @param  ... Arguments to pass on to BayesPrefClass constructor
 #' @export
 prefEl <- function(...) BayesPrefClass(...)
-
-
 
 # Tools to add in preferences 
 
@@ -150,18 +155,39 @@ if (existsFunction("%>%")) {
 }
 
 #' A convinience function for generating Normal priors
-#' @examples Normal(0, 1)(1) == dnorm(1)
+#' @examples Normal(0, 1)(1) == dnorm(1, log = TRUE)
 #' @param  mu The mean of the normal distribution
 #' @param  sigma The standard deviation of the prior
 #' @family Priors
+#' @importFrom stats dnorm
 #' @export
-#' @return A function yielding the PDF a x of a normal distribution with given statistics.
-Normal <- function(mu, sigma) function(x) dnorm(x, mu, sigma)
+#' @return A function yielding the log-PDF a x of a normal distribution with given statistics.
+Normal <- function(mu, sigma){
+  f <- function(x) dnorm(x, mu, sigma, log = T)
+  class(f) <- c("function", "prior", "Normal")
+  return(f)
+}
 
 #' A convinience function for generating Exponential priors
-#' @examples Exp(1)(1) == dexp(1,1)
-#' @param  mu The mean of the exponential distribution
+#' @examples Exp(1)(1) == dexp(1,1, log = TRUE)
+#' @param  mu The mean of the exponential distribution, i.e. \eqn{1/rate}
+#' @family Priors
+#' @importFrom stats dexp
+#' @export
+#' @return A function yielding the log-PDF a x of a exponential distribution with given statistics.
+Exp <- function(mu){
+  f <- function(x) dexp(x, 1.0 / mu, log = T)
+  class(f) <- c("function", "prior", "Exp")
+  return(f)
+}
+
+#' A convinience function for generating a flat prior
+#' @examples Flat()(1) == 0.0
 #' @family Priors
 #' @export
-#' @return A function yielding the PDF a x of a exponential distribution with given statistics.
-Exp <- function(mu) function(x) dexp(x, 1.0 / mu)
+#' @return The zero function.
+Flat <- function(){
+  f <- function(x) 0.0
+  class(f) <- c("function", "prior", "Flat")
+  return(f)
+}
