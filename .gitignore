@@ -25,3 +25,6 @@ vignettes/*.pdf
 # Misc pdf files
 *.pdf
 .Rproj.user
+
+# Irritating mac files
+*.DS_STORE

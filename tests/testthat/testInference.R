@@ -1,14 +1,37 @@
+# Basic data for testing
 data <- as.matrix(data.frame(x = c(1, 0, 1), 
                              y = c(0, 1, 1)))
 priors <-  c(Normal(1, 0.5), 
-             Exp(0.5))
+             Normal(2, 0.5))
 
 p <- prefEl(data = data, priors = priors)
 
-p$infer(estimate = "MAP")
+expect_equal(p$infer(estimate = "MAP"), c(1, 2))
 
-df <- data.frame(x = 0.01 * c(0:100))
+p$priors <- c(Normal(1, 1), 
+              Exp(0.5))
 
-f <- function(x) BayesPref:::.calculateLogProb(c(x, 0.1), p)
+expect_equal(p$infer(estimate = "MAP"), c(1, 0))
 
-df$y <- f(df$x)
+p$priors <- c(Normal(1, 1),
+              Exp(-0.5))
+
+expect_equal(p$infer(estimate = "MAP"), c(1,0))
+
+# Want to throw errors at indecisive people
+p$priors <- c(Flat(), Flat())
+expect_error(p$infer())
+
+# Begin testing actual preferneces 
+p$addPref(BayesPref::`%>%`(1,3))
+est <- p$infer()
+expect_gt(est[1], est[2])
+
+p$addPref(BayesPref::`%>%`(2,3))
+est <- p$infer()
+expect_equal(est[1], est[2])
+
+p$addPref(BayesPref::`%>%`(1,2))
+est <- p$infer()
+expect_gt(est[1], est[2])
+

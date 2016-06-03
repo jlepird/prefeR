@@ -7,13 +7,7 @@
   
   # For each prior/guess pair, apply the prior function
   logPrior <- sum(mapply(function(x, prior) prior(x), x, p$priors))
-  
-  cat(x)
-  cat("\n")
-  
-  if (is.infinite(logPrior)) logPrior <- -100
-  
-  cat(paste("Return:",stricts + indif + logPrior, "\n"))
+
   return(stricts + indif + logPrior)
 }
 

@@ -176,7 +176,7 @@ Normal <- function(mu, sigma){
 #' @export
 #' @return A function yielding the log-PDF a x of a exponential distribution with given statistics.
 Exp <- function(mu){
-  f <- function(x) dexp(x, 1.0 / mu, log = T)
+  f <- function(x) dexp(sign(mu) * x, sign(mu) * 1.0 / mu, log = T) # need to use sign to allow for negative means
   class(f) <- c("function", "prior", "Exp")
   return(f)
 }

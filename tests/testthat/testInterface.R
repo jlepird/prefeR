@@ -23,6 +23,7 @@ expect_equal(p$indif[[1]], s)
 
 # Prior helper functions
 expect_equal(Exp(2.0)(1.0), dexp(1.0, 1.0/2, log = TRUE))
+expect_equal(Exp(2.0)(1.0), Exp(-2.0)(-1.0))
 expect_equal(Normal(0.0,1.0)(1.0), dnorm(1.0, log = TRUE))
 expect_equal(Flat()(1), 0.0)
 expect_is(Exp(2.0), c("prior", "Exp"))
