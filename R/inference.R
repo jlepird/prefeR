@@ -1,5 +1,4 @@
 library(mcmc)
-library(nloptr)
 
 #' A function that estimates the user's underlying utility function. 
 #' @examples
@@ -11,11 +10,18 @@ library(nloptr)
 #' @param estimate The type of posterior point-estimate returned. Valid options are "recommended" (default), "MAP", and "mean".
 #' @return A vector of parameters that best fits the observed preferences
 #' @importFrom stats optim
+#' @importFrom mcmc metrop
 #' @export
 infer <- function(p, estimate = "recommended"){
   # Basic escape if data missing
   is.na(p$data) && stop("No data supplied. Populate the ``data'' field with a matrix/dataframe of your alternatives")
 
+  # keyword validation
+  estimate %in% c("recommended",
+                  "MAP",
+                  "mean",
+                  ".RAW_SAMPLES") || # last option used for suggestion algorithm
+    stop(paste("Unknown estimate option", estimate))
   
   # Start by validating our object
   ncol(p$data) == length(p$priors) || stop(paste("Found", length(p$priors), 
@@ -66,4 +72,16 @@ infer <- function(p, estimate = "recommended"){
   
   # We might be able to stop here 
   if (estimate == "MAP") return(map)
+  
+  # Need to redefine so we get log-prob, not negative log-prob
+  fun <- function(x) .calculateLogProb(x, p)
+  
+  # Run the metropolis hastings algorithm 
+  samples <- metrop(fun, map, nbatch = 1000)
+  
+  if (estimate == "mean"){
+    return(colMeans(samples$batch))
+  } else {
+    return(samples$batch)
+  }
 }
