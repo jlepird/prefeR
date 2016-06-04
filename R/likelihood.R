@@ -1,4 +1,7 @@
-# Internal-- calculates the log probability of seeing a given set of preferences
+#' Calculates the log probability of seeing a given set of preferences
+#' @param x A guess for our weight vector
+#' @param p An object of the Bayes preference class
+#' @return A scalar log-likelihood of the guess x
 .calculateLogProb <- function(x, p){
   # For each preference stated, get the independent log-probability for it, and sum them 
   # all to get our likelihood. vapply is like sapply but with a default return
@@ -11,6 +14,8 @@
   return(stricts + indif + logPrior)
 }
 
+#' Evaluates the likelihood of the observed strict preferences
+#' @importFrom stats pnorm
 .getLogStrictProb <- function(x, pref, p){
   d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])
   varAlongD <- t(d) %*% p$Sigma %*% d
@@ -18,6 +23,8 @@
   return(pnorm(meanAlongD, 0, sqrt(varAlongD), log.p = T)[1])
 }
 
+#' Evaluates the likelihood of the observed indifference preferences
+#' @importFrom stats pnorm
 .getLogIndifProb <- function(x, pref, p){
   d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])
   varAlongD <- t(d) %*% p$Sigma %*% d

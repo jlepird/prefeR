@@ -35,10 +35,14 @@ p$addPref(BayesPref::`%>%`(2,3))
 est <- p$infer()
 expect_equal(est[1], est[2])
 
+p$addPref(BayesPref::`%=%`(1,2))
+est <- p$infer()
+expect_equal(est[1], est[2])
+
 p$addPref(BayesPref::`%>%`(1,2))
 est <- p$infer()
 expect_gt(est[1], est[2])
 
-# Test posterior mean estimator
+# Test posterior mean estimator too
 est <- p$infer(estimate = "mean")
 expect_gt(est[1], est[2])
