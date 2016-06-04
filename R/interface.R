@@ -64,8 +64,13 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        },
                        addPref = function(x) {
                          "Adds a preference created using \\%>\\%, \\%<\\%, or \\%=\\%."
-                         if ("strict" %in% class(x)) strict <<- append(strict, list(x));
-                         if ("indif" %in% class(x))  indif  <<- append(indif, list(x)); return()
+                         if ("strict" %in% class(x)) {
+                           strict <<- append(strict, list(x))
+                           return()
+                         } else if ("indif"  %in% class(x)) {
+                           indif <<- append(indif,  list(x))
+                           return()
+                         }
                          stop("Unknown input type. \nPlease create preferences using %>%, %<%, or %=%.")
                        },
                        infer = function(estimate = "recommended") {

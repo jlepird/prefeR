@@ -2,7 +2,7 @@
 % Please edit documentation in R/suggester.R
 \name{suggest}
 \alias{suggest}
-\title{Suggests a good comparision for the user to make next}
+\title{Suggests a good comparision for the user to make next.}
 \usage{
 suggest(p)
 }
@@ -13,6 +13,9 @@ suggest(p)
 A two-element vector of recommended comparisons.
 }
 \description{
-Suggests a good comparision for the user to make next
+Suggests a good comparision for the user to make next.
+}
+\examples{
+p <- prefEl()
 }
 
