@@ -7,7 +7,7 @@ Author: John Lepird
 Maintainer: John Lepird <jlepird@alum.mit.edu>
 Description: This package implements the preference elicitation algorithm described in "Bayesian Preference Eliciation for Engineering Design Optimization",by Lepird, Owen, and Kochenderfer. 
 License: MIT + file LICENSE
-Imports: mcmc, methods
+Imports: mcmc, methods, entropy
 Suggests:
     testthat
 RoxygenNote: 5.0.1

@@ -1,7 +1,7 @@
 #' An object containing all data necessary for preference elicitation.
 #' @name BayesPrefClass
 #' @import methods
-#' @exportClass BayesPrefClass
+# #' @exportClass BayesPrefClass
 #' @field data A matrix or dataframe of data.
 #' @field priors A list of functions that give the prior on each variable.
 #' @field sigma A scalar value to use for the confusion factor (default 0.1).
@@ -71,6 +71,10 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        infer = function(estimate = "recommended"){
                          "Calls the ``infer'' function to guess weights" 
                          BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
+                       },
+                       suggest = function(){
+                         "Calls the ``suggest'' function to guess weights" 
+                         BayesPref::suggest(.self) # have to be careful with namespace here
                        }
                      )
 )

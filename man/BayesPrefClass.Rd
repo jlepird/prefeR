@@ -28,5 +28,7 @@ An object containing all data necessary for preference elicitation.
 \item{\code{addPref(x)}}{Adds a preference created using \%>\%, \%<\%, or \%=\%.}
 
 \item{\code{infer(estimate = "recommended")}}{Calls the ``infer'' function to guess weights}
+
+\item{\code{suggest()}}{Calls the ``suggest'' function to guess weights}
 }}
 

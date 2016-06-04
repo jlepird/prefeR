@@ -41,12 +41,12 @@ suggest <- function(p){
 
 #' Calculates the entropy of a matrix of samples.
 #' @param X a matrix where each row is a sample of variables in different columns
-#' @importFrom stats density
+#' @importFrom entropy entropy
+#' @importFrom entropy discretize
 .sampleEntropy <- function(X){
-  # Assume independence across columns
+  # Assume independence across columns-- totally wrong, but necessary to maintain computational tractability 
   kdes <- apply(X, 2, function(x){
-    k <- density(x)
-    return(-sum(k$y * log(k$y)))
+    return(entropy(discretize(x, numBins = length(x)/10)))
   })
   return(sum(kdes))
 }

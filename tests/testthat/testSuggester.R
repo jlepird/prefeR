@@ -10,4 +10,5 @@ p$addPref(BayesPref::`%>%`(1,3))
 
 p$addPref(BayesPref::`%>%`(2,3))
 
-suggest(p)
+set.seed(2) # set a non-unlucky seed
+expect_equal(p$suggest(), c(2,1))

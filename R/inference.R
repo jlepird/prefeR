@@ -35,9 +35,9 @@ infer <- function(p, estimate = "recommended"){
   
   # Recommended estimate (if applicable). If an exponential distribution exists, 
   # then we generally want the posterior mean. Otherwise, want MAP. 
-  if (estimate == "recommended"){
+  if (estimate == "recommended") {
     hasExp <- sum(sapply(p$priors, function(x) "Exp" %in% class(x)))
-    if (hasExp){
+    if (hasExp) {
       estimate <- "mean"
     } else {
       estimate <- "MAP"
@@ -64,7 +64,7 @@ infer <- function(p, estimate = "recommended"){
                upper = ub)
   
   # Verify that we converged to our optimmum 
-  if (map$convergence != 0){
+  if (map$convergence != 0) {
     stop(paste("Optimization error", map$message))
   }
   # Peel out the argmax
@@ -79,7 +79,7 @@ infer <- function(p, estimate = "recommended"){
   # Run the metropolis hastings algorithm 
   samples <- metrop(fun, map, nbatch = 1000)
   
-  if (estimate == "mean"){
+  if (estimate == "mean") {
     return(colMeans(samples$batch))
   } else {
     return(samples$batch)
