@@ -129,13 +129,13 @@ if (existsFunction("%>%")) {
   # Need to check if function existed already, i.e. in dplyr
   if (existsFunction("%<%")) {
     oldLt <- `%<%`
-    if(class(a) == class(b) & class(a) %in% c("numeric", "character")){
-      ret <- list(b,a)
+    if (class(a) == class(b) & class(a) %in% c("numeric", "character")){
+      ret <- list(b, a)
     } else {
-      return(oldLt(a,b))
+      return(oldLt(a, b))
     }
   } else {
-    ret <- list(b,a)
+    ret <- list(b, a)
   }
   class(ret) <- c("list", "strict")
   return(ret)
@@ -153,13 +153,13 @@ if (existsFunction("%>%")) {
   # Need to check if function existed already, i.e. in dplyr
   if (existsFunction("%=%")) {
     oldEq <- `%=%`
-    if(class(a) == class(b) & class(a) %in% c("numeric", "character")){
-      ret <- (list(a,b))
+    if (class(a) == class(b) & class(a) %in% c("numeric", "character")){
+      ret <- (list(a, b))
     } else {
-      return(oldEq(a,b))
+      return(oldEq(a, b))
     }
   } else {
-    ret <- (list(a,b))
+    ret <- (list(a, b))
   }
   class(ret) <- c("list", "indif")
   return(ret)
