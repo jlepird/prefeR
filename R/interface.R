@@ -1,7 +1,6 @@
 #' An object containing all data necessary for preference elicitation.
 #' @name BayesPrefClass
 #' @import methods
-# #' @exportClass BayesPrefClass
 #' @field data A matrix or dataframe of data.
 #' @field priors A list of functions that give the prior on each variable.
 #' @field sigma A scalar value to use for the confusion factor (default 0.1).
@@ -25,6 +24,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          Sigma  <<- NA
                          strict <<- list()
                          indif  <<- list()
+                         
                          # Call super to override any defaults
                          callSuper(...)
                        }, 
@@ -33,7 +33,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          cat("Preference elicitation object with:\n")
                          
                          # Number of observations
-                         if (is.null(nrow(data))){
+                         if (is.null(nrow(data))) {
                            cat("\tNo Data\n")
                          } else {
                            cat(paste0("\t", nrow(data), " observations of ", ncol(data), " variables.\n"))
@@ -41,9 +41,9 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          
                          cat("And the following preferences:\n")
                          # Strict preferences
-                         if (length(strict) == 0){
+                         if (length(strict) == 0) {
                            cat("\tNo strict preferences.\n")
-                         } else if (length(strict) < 10){
+                         } else if (length(strict) < 10) {
                            for (x in strict){
                              cat(paste0("\t",x[[1]], " preferred to ", x[[2]], "\n"))
                            } 
@@ -52,27 +52,27 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          }
                          
                          # Indif preferences
-                         if (length(indif) == 0){
+                         if (length(indif) == 0) {
                            cat("\tNo indifference preferences.\n")
-                         } else if (length(indif) < 10){
-                           for (x in indif){
+                         } else if (length(indif) < 10) {
+                           for (x in indif) {
                              cat(paste0("\t", x[1], " indifferent to ", x[2], "\n"))
                            } 
                          } else {
                            cat(paste("\t", length(indif), "indifference preferences.\n"))
                          }
                        },
-                       addPref = function(x){
+                       addPref = function(x) {
                          "Adds a preference created using \\%>\\%, \\%<\\%, or \\%=\\%."
                          if ("strict" %in% class(x)) strict <<- append(strict, list(x));
                          if ("indif" %in% class(x))  indif  <<- append(indif, list(x)); return()
                          stop("Unknown input type. \nPlease create preferences using %>%, %<%, or %=%.")
                        },
-                       infer = function(estimate = "recommended"){
+                       infer = function(estimate = "recommended") {
                          "Calls the ``infer'' function to guess weights" 
                          BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
                        },
-                       suggest = function(){
+                       suggest = function() {
                          "Calls the ``suggest'' function to guess weights" 
                          BayesPref::suggest(.self) # have to be careful with namespace here
                        }
@@ -81,7 +81,9 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
 
 
 #' A shortcut to create objects of the class BayesPrefClass
-#' @examples help(BayesPrefClass)
+#' @examples 
+#' help(BayesPrefClass)
+#' p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)))
 #' @param  ... Arguments to pass on to BayesPrefClass constructor
 #' @export
 prefEl <- function(...) BayesPrefClass(...)

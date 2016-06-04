@@ -15,6 +15,9 @@ library(mcmc)
 infer <- function(p, estimate = "recommended"){
   # Basic escape if data missing
   is.na(p$data) && stop("No data supplied. Populate the ``data'' field with a matrix/dataframe of your alternatives")
+  
+  # Convert to a matrix object for inference
+  p$data <- as.matrix(p$data)
 
   # keyword validation
   estimate %in% c("recommended",
