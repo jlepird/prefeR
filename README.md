@@ -18,12 +18,15 @@ install_github("jlepird/BayesPref")
 #### Hello, World
 ```R
 library(BayesPref)
+
+# Each column of data is a variable, i.e. objective, and each row
+# is an alternative.
 p <- prefEl(data = data.frame(x = c(1, 0, 1), 
                               y = c(0, 1, 1)))
 p$addPref(1 %>% 3)
 p$addPref(2 %>% 3)
-p$infer() # returns that x and y are of equal importance
+p$infer()   # returns that x and y are of equal importance
 p$suggest() # suggest compare 1 to 2
 p$addPref(1 %=% 2)
-p$infer() # maintains belief that 1 and 2 are equal
+p$infer()  # maintains belief that 1 and 2 are equal
 ```
