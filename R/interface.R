@@ -36,7 +36,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          if (is.null(nrow(data))){
                            cat("\tNo Data\n")
                          } else {
-                           cat(paste("\t", nrow(data), "observations of", ncol(data), "variables.\n"))
+                           cat(paste0("\t", nrow(data), " observations of ", ncol(data), " variables.\n"))
                          }
                          
                          cat("And the following preferences:\n")
