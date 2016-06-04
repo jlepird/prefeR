@@ -1,5 +1,6 @@
 ### Package Status
 [![Build Status](https://travis-ci.org/jlepird/BayesPref.png)](https://travis-ci.org/jlepird/BayesPref)
+[![codecov.io](https://codecov.io/gh/jlepird/BayesPref/coverage.svg?branch=master)](https://codecov.io/gh/jlepird/BayesPref?branch=master)
 
 ### What is preference elicitation?
 Most real-world decisions must reconcile multiple, competing objectives. In buying a car, you might be concerned about cost, reliability, and performance, but before you can make a decision, you must establish the relative importance of these goals. A common mathematical approach to this problem is to define weights for each of these objectives. Although you might have a ballpark intuition for the weights, it is difficult to set them in a repeatable and defendable manner. 
