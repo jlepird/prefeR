@@ -28,5 +28,6 @@ p$addPref(2 %>% 3)
 p$infer()   # returns that x and y are of equal importance
 p$suggest() # suggest compare 1 to 2
 p$addPref(1 %=% 2)
-p$infer()  # maintains belief that 1 and 2 are equal
+p$infer()   # maintains belief that 1 and 2 are equal
+p$rank()    # calculates the value of all three alternatives
 ```
