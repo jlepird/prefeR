@@ -1,0 +1,81 @@
+---
+title: "Using preference elicitation to identify a user's ideal car"
+author: "Jack Lepird"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Motor Trend Cars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+This vignette demonstrates how to use the BayesPref package on a real dataset. The ```mtcars``` dataset provides us such an opportunity.
+
+```{r, echo=FALSE, results='asis'}
+knitr::kable(head(mtcars, 5), caption = "1974 Motor Trends Car Data")
+```
+
+If we wanted to give a user a list of their top five most perferred cars from the ```mtcars``` dataset, there are three approaches we could take:
+
+1. Have our user manually rank all options.
+2. Make the user provide weights for the desirability of different car features, and calculate the weighted value of each option. 
+3. Have the user compare a small number of alternatives, and derive their weights from those comparisions. 
+
+Option \#1 quickly becomes an enormous burden on the user as the number of alternatives increases. Option \#2 is difficult for the user to do and replicate. What exactly does it mean if the weight assigned to horsepower is double the weight assigned to fuel efficiency?
+
+Option \#3 is enabled by the preference elicitation package. To begin, we create a preference elicitation object and give it our data:
+
+```{r, collapse = T}
+library(BayesPref)
+p <- prefEl(data = mtcars)
+p
+```
+
+Now we can add in our Bayesian priors for the weights. Although it is difficult to determine weights exactly, usually one has some ballpark estimate for what they should be, and often one knows with certainty the sign of the weights: all else equal, everyone would prefer a more fuel efficient car. The ```BayesPref``` package contains three built-in priors:
+
+* ```Normal(mu, sigma)``` provides a one-dimensional Normal prior with mean mu and standard deviation sigma. This prior is useful if you have a good guess for what the weight should be, and an understanding of how much you expect to differ from that guess. 
+* ```Exp(mu)``` provides a one dimensional Exponential prior with mean mu (not rate!). This prior is particularly useful if you deterministically know the sign of the weight, and have a guess for the value of the weight. The mean may be negative.
+* ```Flat()``` yields a completely agnostic, flat prior. 
+
+We can now add in our priors for our ```mtcars``` attributes. 
+```{r}
+p$priors <- c(Exp(1),   # MPG
+              Normal(), # Number of cylinders (Normal() = Normal(0, 1))
+              Normal(), # displacement
+              Exp(2),   # horsepower
+              Normal(), # real axle ratio
+              Normal(), # weight
+              Exp(-3),  # quarter mile time
+              Normal(), # Engine type
+              Normal(), # transmission type
+              Normal(), # number of gears
+              Normal()  # number of carburetors
+)
+```
+
+Now, we can add in our user's preferences:
+
+```{r, results='hide'} 
+p$addPref("Pontiac Firebird" %>% "Fiat 128")  # prefer a cool sports car 
+p$addPref("Mazda RX4 Wag" %<% "Mazda RX4")    # prefer not to have the station wagon
+p$addPref("Merc 280" %=% "Merc 280C")         # indifferent about C-option
+```
+```{r, collapse = T}
+p
+```
+
+Now, we can infer what our attribute weights should be:
+
+```{r, collapse = T}
+p$infer()
+```
+
+And we can get our top five cars:
+```{r, collapse = T}
+p$rank()[1:5]
+```
+
+Finally, we can figure out what query we should answer next:
+
+```{r, collapse = T}
+p$suggest()
+```

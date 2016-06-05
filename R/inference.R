@@ -8,11 +8,12 @@ library(mcmc)
 #'  # infer(p, estimate = "recommended")
 #' @param  p A BayesPrefClass instance
 #' @param estimate The type of posterior point-estimate returned. Valid options are "recommended" (default), "MAP", and "mean".
+#' @param nbatch If using Monte Carlo estimates, the number of samples. Defaults to 1000. 
 #' @return A vector of parameters that best fits the observed preferences
 #' @importFrom stats optim
 #' @importFrom mcmc metrop
 #' @export
-infer <- function(p, estimate = "recommended"){
+infer <- function(p, estimate = "recommended", nbatch = 1000){
   # Basic escape if data missing
   is.na(p$data) && stop("No data supplied. Populate the ``data'' field with a matrix/dataframe of your alternatives")
   
@@ -83,7 +84,7 @@ infer <- function(p, estimate = "recommended"){
   fun <- function(x) .calculateLogProb(x, p)
   
   # Run the metropolis hastings algorithm 
-  samples <- metrop(fun, map, nbatch = 1000)
+  samples <- metrop(fun, map, nbatch = nbatch)
   
   if (estimate == "mean") {
     est <- colMeans(samples$batch)

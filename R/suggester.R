@@ -1,10 +1,9 @@
 #' Suggests a good comparision for the user to make next. 
 #' @export
-#' @examples 
-#' p <- prefEl()
 #' @param p An object of class BayesPrefClass.
+#' @param maxComparisons The maximum number of possible comparisions to check. Default: 10. 
 #' @return A two-element vector of recommended comparisons.
-suggest <- function(p){
+suggest <- function(p, maxComparisons = 10){
   
   # Convert to a matrix object for inference (if not already)
   p$data <- as.matrix(p$data)
@@ -34,6 +33,9 @@ suggest <- function(p){
   # Calculate our current best guess
   bestGuess <- infer(p)
   
+  # Truncate our list as stated
+  poss <- poss[sample(nrow(poss), min(nrow(poss), maxComparisons)), ]
+  
   # Calculate the expected posterior entropy of each possible comparison
   poss$entropy <- mapply(function(x,y) .estimateEntropy(p, bestGuess, x, y), poss$Var1, poss$Var2)
   
@@ -59,12 +61,12 @@ suggest <- function(p){
   p$strict <- append(originalStrict, list(list(x,y)))
   
   # Get the raw samples for this new posterior, and estimate its entropy
-  sampsXgtY <- infer(p, estimate = ".RAW_SAMPLES")
+  sampsXgtY <- infer(p, estimate = ".RAW_SAMPLES", nbatch = 100)
   entXgtY   <- .sampleEntropy(sampsXgtY)
   
   # Do the same as above, but with x > y 
   p$strict <- append(originalStrict, list(list(y,x)))
-  sampsYgtX <- infer(p, estimate = ".RAW_SAMPLES")
+  sampsYgtX <- infer(p, estimate = ".RAW_SAMPLES", nbatch = 100)
   entYgtX   <- .sampleEntropy(sampsYgtX)
   p$strict <- originalStrict
   
@@ -79,6 +81,7 @@ suggest <- function(p){
 .sampleEntropy <- function(X){
   # Assume independence across columns-- totally wrong, but necessary to maintain computational tractability 
   kdes <- apply(X, 2, function(x){
+    if (length(unique(x)) == 1) return(0) # escape in case all samples at same value
     return(entropy(discretize(x, numBins = length(x)/10)))
   })
   return(sum(kdes))

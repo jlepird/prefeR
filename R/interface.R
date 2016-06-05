@@ -83,6 +83,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        infer = function(estimate = "recommended") {
                          "Calls the ``infer'' function to guess weights" 
                          weights <<- BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
+                         return(weights)
                          },
                        suggest = function() {
                          "Calls the ``suggest'' function to guess weights" 

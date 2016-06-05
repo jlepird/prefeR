@@ -4,18 +4,17 @@
 \alias{suggest}
 \title{Suggests a good comparision for the user to make next.}
 \usage{
-suggest(p)
+suggest(p, maxComparisons = 10)
 }
 \arguments{
 \item{p}{An object of class BayesPrefClass.}
+
+\item{maxComparisons}{The maximum number of possible comparisions to check. Default: 10.}
 }
 \value{
 A two-element vector of recommended comparisons.
 }
 \description{
 Suggests a good comparision for the user to make next.
-}
-\examples{
-p <- prefEl()
 }
 
