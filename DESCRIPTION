@@ -1,6 +1,6 @@
 Package: BayesPref
 Type: Package
-Title: What the package does (short line)
+Title: R package for pairwise preference elicitation
 Version: 0.1
 Date: 2016-05-07
 Author: John Lepird
@@ -9,5 +9,5 @@ Description: This package implements the preference elicitation algorithm descri
 License: MIT + file LICENSE
 Imports: mcmc, methods, entropy
 Suggests:
-    testthat
+    testthat, knitr
 RoxygenNote: 5.0.1

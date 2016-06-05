@@ -8,17 +8,17 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-This vignette demonstrates how to use the BayesPref package on a real dataset. The ```mtcars``` dataset provides us such an opportunity.
+This vignette demonstrates how to use the ```BayesPref``` package on a real dataset. The ```mtcars``` dataset provides us such an opportunity.
 
 ```{r, echo=FALSE, results='asis'}
 knitr::kable(head(mtcars, 5), caption = "1974 Motor Trends Car Data")
 ```
 
-If we wanted to give a user a list of their top five most perferred cars from the ```mtcars``` dataset, there are three approaches we could take:
+If we wanted to give a user a list of their top five most preferred cars from the ```mtcars``` dataset, there are three approaches we could take:
 
 1. Have our user manually rank all options.
 2. Make the user provide weights for the desirability of different car features, and calculate the weighted value of each option. 
-3. Have the user compare a small number of alternatives, and derive their weights from those comparisions. 
+3. Have the user compare a small number of alternatives, and derive their weights from those comparisons. 
 
 Option \#1 quickly becomes an enormous burden on the user as the number of alternatives increases. Option \#2 is difficult for the user to do and replicate. What exactly does it mean if the weight assigned to horsepower is double the weight assigned to fuel efficiency?
 
