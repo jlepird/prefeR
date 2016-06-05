@@ -38,4 +38,4 @@ p <- prefEl(data = data.frame(x = c(1, 0, 1),
 
 p$addPref(BayesPref::`%>%`(1, 3))
 p$addPref(BayesPref::`%>%`(1, 2))
-expect_equal(order(p$rank()), c(2, 3, 1))
+expect_equivalent(order(p$rank()), c(3, 2, 1))

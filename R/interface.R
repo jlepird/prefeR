@@ -98,7 +98,8 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                                             function(x){
                                               weights %*% x
                                             })
-                         row.names(utilities) <- row.names(data)
+                         names(utilities) <- row.names(data)
+                         utilities <- sort(utilities, decreasing = T)
                          return(utilities)
                        }
                      )

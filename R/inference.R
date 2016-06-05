@@ -74,7 +74,10 @@ infer <- function(p, estimate = "recommended"){
   map <- map$par
   
   # We might be able to stop here 
-  if (estimate == "MAP") return(map)
+  if (estimate == "MAP"){
+    names(map) <- colnames(p$data)
+    return(map)
+  }
   
   # Need to redefine so we get log-prob, not negative log-prob
   fun <- function(x) .calculateLogProb(x, p)
@@ -83,7 +86,9 @@ infer <- function(p, estimate = "recommended"){
   samples <- metrop(fun, map, nbatch = 1000)
   
   if (estimate == "mean") {
-    return(colMeans(samples$batch))
+    est <- colMeans(samples$batch)
+    names(est) <- colnames(p$data)
+    return(est)
   } else {
     return(samples$batch)
   }
