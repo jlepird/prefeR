@@ -30,3 +30,12 @@ expect_equal(Flat()(1), 0.0)
 expect_is(Exp(2.0), c("prior", "Exp"))
 expect_is(Normal(0,1), c("prior", "Normal"))
 expect_is(Flat(), c("prior", "Flat"))
+
+# Ranker
+p <- prefEl(data = data.frame(x = c(1, 0, 1), 
+                              y = c(0, 1, 1)),
+            priors = c(Normal(), Normal()))
+
+p$addPref(BayesPref::`%>%`(1, 3))
+p$addPref(BayesPref::`%>%`(1, 2))
+expect_equal(order(p$rank()), c(2, 3, 1))

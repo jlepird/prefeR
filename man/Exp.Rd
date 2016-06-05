@@ -4,7 +4,7 @@
 \alias{Exp}
 \title{A convinience function for generating Exponential priors}
 \usage{
-Exp(mu)
+Exp(mu = 1)
 }
 \arguments{
 \item{mu}{The mean of the exponential distribution, i.e. \eqn{1/rate}}

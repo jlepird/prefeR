@@ -4,7 +4,7 @@
 \alias{Normal}
 \title{A convinience function for generating Normal priors}
 \usage{
-Normal(mu, sigma)
+Normal(mu = 0, sigma = 1)
 }
 \arguments{
 \item{mu}{The mean of the normal distribution}

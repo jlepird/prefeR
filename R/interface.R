@@ -4,26 +4,29 @@
 #' @field data A matrix or dataframe of data.
 #' @field priors A list of functions that give the prior on each variable.
 #' @field sigma A scalar value to use for the confusion factor (default 0.1).
-#' @field Sigma (Internal use only) A matrix of sigma * diag(ncol(data))
+#' @field Sigma (Internal use only) A matrix of sigma * diag(ncol(data)).
 #' @field strict A list of lists of preferences. For each element x, x[[1]] > x[[2]].
 #' @field indif A list of lists of indifferences. For each element x, x[[1]] = x[[2]].
+#' @field weights A vector of weights determined by the inference algorithm. 
 BayesPrefClass <- setRefClass("BayesPrefClass",
                      fields = c("data",
                                 "priors",
                                 "sigma",
                                 "Sigma", 
                                 "strict",
-                                "indif"), 
+                                "indif",
+                                "weights"), 
                      methods = list(
                        initialize = function(...){
                          
                          # Provide default values
-                         data   <<- NA
-                         priors <<- list()
-                         sigma  <<- 0.1
-                         Sigma  <<- NA
-                         strict <<- list()
-                         indif  <<- list()
+                         data    <<- NA
+                         priors  <<- list()
+                         sigma   <<- 0.1
+                         Sigma   <<- NA
+                         strict  <<- list()
+                         indif   <<- list()
+                         weights <<- NA
                          
                          # Call super to override any defaults
                          callSuper(...)
@@ -64,6 +67,10 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        },
                        addPref = function(x) {
                          "Adds a preference created using \\%>\\%, \\%<\\%, or \\%=\\%."
+                         
+                         # Undo any previous inference
+                         weights <<- NA
+                         
                          if ("strict" %in% class(x)) {
                            strict <<- append(strict, list(x))
                            return()
@@ -75,11 +82,24 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        },
                        infer = function(estimate = "recommended") {
                          "Calls the ``infer'' function to guess weights" 
-                         BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
-                       },
+                         weights <<- BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
+                         },
                        suggest = function() {
                          "Calls the ``suggest'' function to guess weights" 
                          BayesPref::suggest(.self) # have to be careful with namespace here
+                       },
+                       rank = function(){
+                         "Calculates the utilty of each row in our dataset"
+                         is.na(data) && stop("No data supplied")
+                         
+                         # Calculate weights if we don't already have them
+                         is.na(weights) && infer()
+                         utilities <- apply(data, 1, # over rows
+                                            function(x){
+                                              weights %*% x
+                                            })
+                         row.names(utilities) <- row.names(data)
+                         return(utilities)
                        }
                      )
 )
@@ -173,7 +193,7 @@ if (existsFunction("%>%")) {
 #' @importFrom stats dnorm
 #' @export
 #' @return A function yielding the log-PDF a x of a normal distribution with given statistics.
-Normal <- function(mu, sigma){
+Normal <- function(mu = 0.0, sigma = 1.0){
   f <- function(x) dnorm(x, mu, sigma, log = T)
   class(f) <- c("function", "prior", "Normal")
   return(f)
@@ -186,7 +206,7 @@ Normal <- function(mu, sigma){
 #' @importFrom stats dexp
 #' @export
 #' @return A function yielding the log-PDF a x of a exponential distribution with given statistics.
-Exp <- function(mu){
+Exp <- function(mu = 1.0){
   f <- function(x) dexp(sign(mu) * x, sign(mu) * 1.0 / mu, log = T) # need to use sign to allow for negative means
   class(f) <- c("function", "prior", "Exp")
   return(f)
