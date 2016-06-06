@@ -9,5 +9,6 @@ Description: This package implements the preference elicitation algorithm descri
 License: MIT + file LICENSE
 Imports: mcmc, methods, entropy
 Suggests:
-    testthat, knitr
+    testthat, knitr, rmarkdown
+VignetteBuilder: knitr
 RoxygenNote: 5.0.1
