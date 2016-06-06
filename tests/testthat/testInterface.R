@@ -14,13 +14,14 @@ expect_is(BayesPref::`%=%`(1,2), c("list","indif"))
 
 # Preference adders
 s <- BayesPref::`%>%`(1,2)
-p <- prefEl()
+p <- prefEl(data = iris)
 expect_error(p$addPref("foo"))
 p$addPref(s)
 expect_equal(p$strict[[1]], s)
 s <- BayesPref::`%=%`(1,2)
 p$addPref(s)
 expect_equal(p$indif[[1]], s)
+expect_error(p$addPref(BayesPref::`%>%`("foo", "bar")))
 
 # Prior helper functions
 expect_equal(Exp(2.0)(1.0), dexp(1.0, 1.0/2, log = TRUE))

@@ -33,6 +33,6 @@ An object containing all data necessary for preference elicitation.
 
 \item{\code{rank()}}{Calculates the utilty of each row in our dataset}
 
-\item{\code{suggest()}}{Calls the ``suggest'' function to guess weights}
+\item{\code{suggest(maxComparisons = 10)}}{Calls the ``suggest'' function to guess weights}
 }}
 

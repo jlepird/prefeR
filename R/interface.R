@@ -68,6 +68,12 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        addPref = function(x) {
                          "Adds a preference created using \\%>\\%, \\%<\\%, or \\%=\\%."
                          
+                         # Make sure new rownames exist
+                         lapply(x, function(a){
+                           a %in% row.names(data) || (is.numeric(a) && a <= nrow(data)) || 
+                             stop(paste("Row", a, "not found in data."))
+                         })
+                         
                          # Undo any previous inference
                          weights <<- NA
                          
@@ -85,9 +91,9 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          weights <<- BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
                          return(weights)
                          },
-                       suggest = function() {
+                       suggest = function(maxComparisons = 10) {
                          "Calls the ``suggest'' function to guess weights" 
-                         BayesPref::suggest(.self) # have to be careful with namespace here
+                         BayesPref::suggest(.self, maxComparisons = maxComparisons) # have to be careful with namespace here
                        },
                        rank = function(){
                          "Calculates the utilty of each row in our dataset"
