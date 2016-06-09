@@ -21,8 +21,8 @@ A function that estimates the user's underlying utility function.
 }
 \examples{
  p <- prefEl(data = data.frame(c(1,0,1), c(0,1,1), c(1,1,1)),
-             priors = c(Normal(1,0), Exp(0.5), Flat()))
+             priors = c(Normal(0, 1), Exp(0.5), Flat()))
  p$addPref(1 \%>\% 2)
- # infer(p, estimate = "recommended")
+ infer(p, estimate = "recommended")
 }
 

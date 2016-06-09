@@ -115,11 +115,16 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
 
 #' A shortcut to create objects of the class BayesPrefClass
 #' @examples 
+#' p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
+#'             priors = c(Normal(0,1), Flat()))
 #' help(BayesPrefClass)
-#' p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)))
-#' @param  ... Arguments to pass on to BayesPrefClass constructor
+#' @param data A matrix or dataframe of data. Each column should be a variable, each row an observation.
+#' @param priors A list of functions that give the prior on each variable. E.g. see help(Flat)
+#' @param  ... Other parameters to pass to the class constructor. Not recommended. 
 #' @export
-prefEl <- function(...) BayesPrefClass(...)
+prefEl <- function(data = NA, priors = list(), ...) BayesPrefClass(data = data, priors = priors, ...)
+
+
 
 # Tools to add in preferences 
 
@@ -128,7 +133,7 @@ prefEl <- function(...) BayesPrefClass(...)
 #' @param  a The preferred row
 #' @param  b The nonpreferred row
 #' @export
-#' @family Preference statement tools
+#' @family preferences
 `%>%` <- function(a,b){
   # Need to check if function existed already, i.e. in dplyr
   ret <- NULL
@@ -150,7 +155,7 @@ if (existsFunction("%>%")) {
 #' @examples 1 %<% 2 # prefer row 2 to row 1
 #' @param  b The preferred row
 #' @param  a The nonpreferred row
-#' @family Preference statement tools
+#' @family preferences
 #' @export
 `%<%` <- function(a,b){
   ret <- NULL
@@ -174,7 +179,7 @@ if (existsFunction("%>%")) {
 #' @examples 1 %<% 2 # prefer row 2 to row 1
 #' @param  b The preferred row
 #' @param  a The nonpreferred row
-#' @family Preference statement tools
+#' @family preferences
 #' @export
 `%=%` <- function(a,b){
   ret <- NULL
@@ -197,10 +202,10 @@ if (existsFunction("%>%")) {
 #' @examples Normal(0, 1)(1) == dnorm(1, log = TRUE)
 #' @param  mu The mean of the normal distribution
 #' @param  sigma The standard deviation of the prior
-#' @family Priors
+#' @family priors
 #' @importFrom stats dnorm
 #' @export
-#' @return A function yielding the log-PDF a x of a normal distribution with given statistics.
+#' @return A function yielding the log-PDF at x of a normal distribution with given statistics.
 Normal <- function(mu = 0.0, sigma = 1.0){
   f <- function(x) dnorm(x, mu, sigma, log = T)
   class(f) <- c("function", "prior", "Normal")
@@ -210,10 +215,10 @@ Normal <- function(mu = 0.0, sigma = 1.0){
 #' A convinience function for generating Exponential priors
 #' @examples Exp(1)(1) == dexp(1,1, log = TRUE)
 #' @param  mu The mean of the exponential distribution, i.e. \eqn{1/rate}
-#' @family Priors
+#' @family priors
 #' @importFrom stats dexp
 #' @export
-#' @return A function yielding the log-PDF a x of a exponential distribution with given statistics.
+#' @return A function yielding the log-PDF at x of a exponential distribution with given statistics.
 Exp <- function(mu = 1.0){
   f <- function(x) dexp(sign(mu) * x, sign(mu) * 1.0 / mu, log = T) # need to use sign to allow for negative means
   class(f) <- c("function", "prior", "Exp")
@@ -222,7 +227,7 @@ Exp <- function(mu = 1.0){
 
 #' A convinience function for generating a flat prior
 #' @examples Flat()(1) == 0.0
-#' @family Priors
+#' @family priors
 #' @export
 #' @return The zero function.
 Flat <- function(){

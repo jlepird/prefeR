@@ -10,7 +10,7 @@ Exp(mu = 1)
 \item{mu}{The mean of the exponential distribution, i.e. \eqn{1/rate}}
 }
 \value{
-A function yielding the log-PDF a x of a exponential distribution with given statistics.
+A function yielding the log-PDF at x of a exponential distribution with given statistics.
 }
 \description{
 A convinience function for generating Exponential priors
@@ -19,6 +19,6 @@ A convinience function for generating Exponential priors
 Exp(1)(1) == dexp(1,1, log = TRUE)
 }
 \seealso{
-Other Priors: \code{\link{Flat}}, \code{\link{Normal}}
+Other priors: \code{\link{Flat}}, \code{\link{Normal}}
 }
 

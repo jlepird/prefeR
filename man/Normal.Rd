@@ -12,7 +12,7 @@ Normal(mu = 0, sigma = 1)
 \item{sigma}{The standard deviation of the prior}
 }
 \value{
-A function yielding the log-PDF a x of a normal distribution with given statistics.
+A function yielding the log-PDF at x of a normal distribution with given statistics.
 }
 \description{
 A convinience function for generating Normal priors
@@ -21,6 +21,6 @@ A convinience function for generating Normal priors
 Normal(0, 1)(1) == dnorm(1, log = TRUE)
 }
 \seealso{
-Other Priors: \code{\link{Exp}}, \code{\link{Flat}}
+Other priors: \code{\link{Exp}}, \code{\link{Flat}}
 }
 

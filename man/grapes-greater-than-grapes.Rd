@@ -18,7 +18,6 @@ A helper function to add in preferences in a user-friendly way
 1 \%>\% 2 # prefer row 1 to row 2
 }
 \seealso{
-Other Preference.statement.tools: \code{\link{\%<\%}},
-  \code{\link{\%=\%}}
+Other preferences: \code{\link{\%<\%}}, \code{\link{\%=\%}}
 }
 

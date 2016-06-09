@@ -4,16 +4,21 @@
 \alias{prefEl}
 \title{A shortcut to create objects of the class BayesPrefClass}
 \usage{
-prefEl(...)
+prefEl(data = NA, priors = list(), ...)
 }
 \arguments{
-\item{...}{Arguments to pass on to BayesPrefClass constructor}
+\item{data}{A matrix or dataframe of data. Each column should be a variable, each row an observation.}
+
+\item{priors}{A list of functions that give the prior on each variable. E.g. see help(Flat)}
+
+\item{...}{Other parameters to pass to the class constructor. Not recommended.}
 }
 \description{
 A shortcut to create objects of the class BayesPrefClass
 }
 \examples{
+p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
+            priors = c(Normal(0,1), Flat()))
 help(BayesPrefClass)
-p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)))
 }
 

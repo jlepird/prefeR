@@ -16,6 +16,6 @@ A convinience function for generating a flat prior
 Flat()(1) == 0.0
 }
 \seealso{
-Other Priors: \code{\link{Exp}}, \code{\link{Normal}}
+Other priors: \code{\link{Exp}}, \code{\link{Normal}}
 }
 
