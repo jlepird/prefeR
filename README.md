@@ -7,6 +7,8 @@ Most real-world decisions must reconcile multiple, competing objectives. In buyi
 
 Preference elicitation relieves some of this burden. Instead of determining the weights directly, you make a series of pairwise comparisons between alternatives: do you prefer car A, car B, or are you indifferent? Research has shown that these pairwise comparisons are far easier to make and much easier to justify than explicitly setting the weights directly.  This package implements a preference elicitation algorithm that takes your stated preferences and uses them to calculate an optimal set of weights. It can even suggest which comparisons you should make to get the most accurate weights with the fewest number of queries. 
 
+Technical details about how this package works can be found in the article [here](http://arc.aiaa.org/doi/abs/10.2514/1.I010363). 
+
 ### Installation
 This package is not yet added to CRAN, but you can install it directly from Github with the ```devtools``` package. 
 ```R
