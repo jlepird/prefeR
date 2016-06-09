@@ -1,0 +1,13 @@
+citEntry("article",
+         textVersion = "Bayesian Preference Elicitation for Multiobjective Engineering Design Optimization.
+John R. Lepird, Michael P. Owen, and Mykel J. Kochenderfer.
+Journal of Aerospace Information Systems 2015 12:10, 634-645",
+         author = c(person("Lepird","John"),
+                    person("Owen", "Mykel"),
+                    person("Kochenderfer","Mykel")),
+         title = "Bayesian Preference Elicitation for Engineering Design Optimization",
+         volume = 12,
+         number = 10,
+         pages = "634-645",
+         journal = "Journal of Aerospace Information Systems",
+         year = 2015)
