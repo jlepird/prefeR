@@ -59,7 +59,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                            cat("\tNo indifference preferences.\n")
                          } else if (length(indif) < 10) {
                            for (x in indif) {
-                             cat(paste0("\t", x[1], " indifferent to ", x[2], "\n"))
+                             cat(paste0("\t", x[[1]], " indifferent to ", x[[2]], "\n"))
                            } 
                          } else {
                            cat(paste("\t", length(indif), "indifference preferences.\n"))
