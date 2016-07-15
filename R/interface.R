@@ -64,6 +64,9 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          } else {
                            cat(paste("\t", length(indif), "indifference preferences.\n"))
                          }
+                         
+                         # Return silently
+                         invisible()
                        },
                        addPref = function(x) {
                          "Adds a preference created using \\%>\\%, \\%<\\%, or \\%=\\%."
@@ -79,12 +82,15 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                          
                          if ("strict" %in% class(x)) {
                            strict <<- append(strict, list(x))
-                           return()
+                           # Return silently
+                           invisible()
                          } else if ("indif"  %in% class(x)) {
                            indif <<- append(indif,  list(x))
-                           return()
+                           # Return silently
+                           invisible()
+                         } else {
+                          stop("Unknown input type. \nPlease create preferences using %>%, %<%, or %=%.")
                          }
-                         stop("Unknown input type. \nPlease create preferences using %>%, %<%, or %=%.")
                        },
                        infer = function(estimate = "recommended") {
                          "Calls the ``infer'' function to guess weights" 
