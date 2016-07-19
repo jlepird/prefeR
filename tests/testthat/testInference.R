@@ -53,3 +53,11 @@ p$addPref(BayesPref::`%>%`("Mazda RX4", "Fiat X1-9"))
 p$addPref(BayesPref::`%>%`("Mazda RX4", "Mazda RX4 Wag"))
 p$priors <- sapply(rep(1.0, 11), Exp)
 expect_equal(names(p$rank()[1]), "Cadillac Fleetwood")
+
+# Test single prior addition
+data <- as.matrix(data.frame(x = c(1, 0, 1), 
+                             y = c(0, 1, 1)))
+priors <-  Normal(1, 0.5)
+
+p <- prefEl(data = data, priors = priors)
+expect_equivalent(p$infer()[1], 1.0) # ignore row names

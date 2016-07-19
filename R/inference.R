@@ -27,9 +27,14 @@ infer <- function(p, estimate = "recommended", nbatch = 1000){
                   ".RAW_SAMPLES") || # last option used for suggestion algorithm
     stop(paste("Unknown estimate option", estimate))
   
+  if (!("list" %in% class(p$priors))) {
+    # Then repeat whatever the user had N times
+    p$priors <- rep(c(p$priors), ncol(p$data))
+  }
+  
   # Start by validating our object
   ncol(p$data) == length(p$priors) || stop(paste("Found", length(p$priors), 
-                                                 "for", ncol(p$data), "dimensional data. Please supply a prior on each column."))
+                                                 "prior(s) for", ncol(p$data), "dimensional data. Please supply a prior on each column."))
   
   hasFlat <- sum(sapply(p$priors, function(x) "Flat" %in% class(x)))
   hasFlat && length(p$strict) == 0 && stop("Cannot have flat priors and no strict preferences-- see http://futurama.wikia.com/wiki/Neutral.")
