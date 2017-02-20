@@ -2,7 +2,7 @@
 % Please edit documentation in R/interface.R
 \name{\%>\%}
 \alias{\%>\%}
-\title{A helper function to add in preferences in a user-friendly way}
+\title{A helper function to add in preferences in a user-friendly way.}
 \usage{
 a \%>\% b
 }
@@ -12,7 +12,7 @@ a \%>\% b
 \item{b}{The nonpreferred row}
 }
 \description{
-A helper function to add in preferences in a user-friendly way
+A helper function to add in preferences in a user-friendly way.
 }
 \examples{
 1 \%>\% 2 # prefer row 1 to row 2
@@ -20,4 +20,3 @@ A helper function to add in preferences in a user-friendly way
 \seealso{
 Other preferences: \code{\link{\%<\%}}, \code{\link{\%=\%}}
 }
-

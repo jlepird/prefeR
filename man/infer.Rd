@@ -7,14 +7,14 @@
 infer(p, estimate = "recommended", nbatch = 1000)
 }
 \arguments{
-\item{p}{A BayesPrefClass instance}
+\item{p}{A BayesPrefClass instance.}
 
 \item{estimate}{The type of posterior point-estimate returned. Valid options are "recommended" (default), "MAP", and "mean".}
 
 \item{nbatch}{If using Monte Carlo estimates, the number of samples. Defaults to 1000.}
 }
 \value{
-A vector of parameters that best fits the observed preferences
+A vector of parameters that best fits the observed preferences.
 }
 \description{
 A function that estimates the user's underlying utility function.
@@ -25,4 +25,3 @@ A function that estimates the user's underlying utility function.
  p$addPref(1 \%>\% 2)
  infer(p, estimate = "recommended")
 }
-

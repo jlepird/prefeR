@@ -1,4 +1,4 @@
 library(testthat)
-library(BayesPref)
+library(prefeR)
 
-test_check("BayesPref")
+test_check("prefeR")

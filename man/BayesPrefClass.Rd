@@ -24,6 +24,7 @@ An object containing all data necessary for preference elicitation.
 
 \item{\code{weights}}{A vector of weights determined by the inference algorithm.}
 }}
+
 \section{Methods}{
 
 \describe{

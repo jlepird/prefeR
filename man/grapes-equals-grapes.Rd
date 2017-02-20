@@ -2,22 +2,21 @@
 % Please edit documentation in R/interface.R
 \name{\%=\%}
 \alias{\%=\%}
-\title{A helper function to add in preferences in a user-friendly way}
+\title{A helper function to add in preferences in a user-friendly way.}
 \usage{
 a \%=\% b
 }
 \arguments{
-\item{a}{The nonpreferred row}
+\item{a}{The first alternative}
 
-\item{b}{The preferred row}
+\item{b}{The second alternative}
 }
 \description{
-A helper function to add in preferences in a user-friendly way
+A helper function to add in preferences in a user-friendly way.
 }
 \examples{
-1 \%<\% 2 # prefer row 2 to row 1
+1 \%=\% 2 # indifferent between 1 and 2
 }
 \seealso{
 Other preferences: \code{\link{\%<\%}}, \code{\link{\%>\%}}
 }
-

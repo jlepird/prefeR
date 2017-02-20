@@ -17,4 +17,3 @@ A two-element vector of recommended comparisons.
 \description{
 Suggests a good comparision for the user to make next.
 }
-

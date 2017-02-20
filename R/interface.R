@@ -94,12 +94,12 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        },
                        infer = function(estimate = "recommended") {
                          "Calls the ``infer'' function to guess weights" 
-                         weights <<- BayesPref::infer(.self, estimate = estimate) # have to be careful with namespace here
+                         weights <<- prefeR::infer(.self, estimate = estimate) # have to be careful with namespace here
                          return(weights)
                          },
                        suggest = function(maxComparisons = 10) {
                          "Calls the ``suggest'' function to guess weights" 
-                         BayesPref::suggest(.self, maxComparisons = maxComparisons) # have to be careful with namespace here
+                         prefeR::suggest(.self, maxComparisons = maxComparisons) # have to be careful with namespace here
                        },
                        rank = function(){
                          "Calculates the utilty of each row in our dataset"
@@ -119,7 +119,7 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
 )
 
 
-#' A shortcut to create objects of the class BayesPrefClass
+#' A shortcut to create objects of the class BayesPrefClass.
 #' @examples 
 #' p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
 #'             priors = c(Normal(0,1), Flat()))
@@ -134,7 +134,7 @@ prefEl <- function(data = NA, priors = list(), ...) BayesPrefClass(data = data, 
 
 # Tools to add in preferences 
 
-#' A helper function to add in preferences in a user-friendly way 
+#' A helper function to add in preferences in a user-friendly way. 
 #' @examples 1 %>% 2 # prefer row 1 to row 2
 #' @param  a The preferred row
 #' @param  b The nonpreferred row
@@ -157,7 +157,7 @@ if (existsFunction("%>%")) {
   return(ret)
 }
 
-#' A helper function to add in preferences in a user-friendly way 
+#' A helper function to add in preferences in a user-friendly way.
 #' @examples 1 %<% 2 # prefer row 2 to row 1
 #' @param  b The preferred row
 #' @param  a The nonpreferred row
@@ -181,10 +181,10 @@ if (existsFunction("%>%")) {
 }
 
 
-#' A helper function to add in preferences in a user-friendly way 
-#' @examples 1 %<% 2 # prefer row 2 to row 1
-#' @param  b The preferred row
-#' @param  a The nonpreferred row
+#' A helper function to add in preferences in a user-friendly way.
+#' @examples 1 %=% 2 # indifferent between 1 and 2
+#' @param  b The second alternative
+#' @param  a The first alternative
 #' @family preferences
 #' @export
 `%=%` <- function(a,b){
@@ -204,7 +204,7 @@ if (existsFunction("%>%")) {
   return(ret)
 }
 
-#' A convinience function for generating Normal priors
+#' A convinience function for generating Normal priors.
 #' @examples Normal(0, 1)(1) == dnorm(1, log = TRUE)
 #' @param  mu The mean of the normal distribution
 #' @param  sigma The standard deviation of the prior
@@ -218,7 +218,7 @@ Normal <- function(mu = 0.0, sigma = 1.0){
   return(f)
 }
 
-#' A convinience function for generating Exponential priors
+#' A convinience function for generating Exponential priors.
 #' @examples Exp(1)(1) == dexp(1,1, log = TRUE)
 #' @param  mu The mean of the exponential distribution, i.e. \eqn{1/rate}
 #' @family priors
@@ -231,7 +231,7 @@ Exp <- function(mu = 1.0){
   return(f)
 }
 
-#' A convinience function for generating a flat prior
+#' A convinience function for generating a flat prior.
 #' @examples Flat()(1) == 0.0
 #' @family priors
 #' @export

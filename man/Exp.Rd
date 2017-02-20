@@ -2,7 +2,7 @@
 % Please edit documentation in R/interface.R
 \name{Exp}
 \alias{Exp}
-\title{A convinience function for generating Exponential priors}
+\title{A convinience function for generating Exponential priors.}
 \usage{
 Exp(mu = 1)
 }
@@ -13,7 +13,7 @@ Exp(mu = 1)
 A function yielding the log-PDF at x of a exponential distribution with given statistics.
 }
 \description{
-A convinience function for generating Exponential priors
+A convinience function for generating Exponential priors.
 }
 \examples{
 Exp(1)(1) == dexp(1,1, log = TRUE)
@@ -21,4 +21,3 @@ Exp(1)(1) == dexp(1,1, log = TRUE)
 \seealso{
 Other priors: \code{\link{Flat}}, \code{\link{Normal}}
 }
-

@@ -9,9 +9,9 @@ p$Sigma <- 0.1 * diag(2)
 x <- c(1.0, 0.5)
 
 # Make sure values match several hard-coded values calculated offline
-expect_equal(BayesPref:::.getLogStrictProb(x, list(1,2), p), -0.1413058, tolerance = 0.001)
-expect_equal(BayesPref:::.getLogStrictProb(x, list(2,1), p), -2.026650, tolerance = 0.001)
-expect_equal(BayesPref:::.getLogIndifProb(x, list(1,2),  p), -0.7188213, tolerance = 0.001)
+expect_equal(prefeR:::.getLogStrictProb(x, list(1,2), p), -0.1413058, tolerance = 0.001)
+expect_equal(prefeR:::.getLogStrictProb(x, list(2,1), p), -2.026650, tolerance = 0.001)
+expect_equal(prefeR:::.getLogIndifProb(x, list(1,2),  p), -0.7188213, tolerance = 0.001)
 
 # Ensure our priors are properly being taken into account
-expect_equal(BayesPref:::.calculateLogProb(x, p), priors[[1]](x[1]) + priors[[2]](x[2]))
+expect_equal(prefeR:::.calculateLogProb(x, p), priors[[1]](x[1]) + priors[[2]](x[2]))

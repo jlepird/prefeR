@@ -2,7 +2,7 @@
 % Please edit documentation in R/interface.R
 \name{Flat}
 \alias{Flat}
-\title{A convinience function for generating a flat prior}
+\title{A convinience function for generating a flat prior.}
 \usage{
 Flat()
 }
@@ -10,7 +10,7 @@ Flat()
 The zero function.
 }
 \description{
-A convinience function for generating a flat prior
+A convinience function for generating a flat prior.
 }
 \examples{
 Flat()(1) == 0.0
@@ -18,4 +18,3 @@ Flat()(1) == 0.0
 \seealso{
 Other priors: \code{\link{Exp}}, \code{\link{Normal}}
 }
-

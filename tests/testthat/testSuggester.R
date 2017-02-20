@@ -6,8 +6,8 @@ priors <- c(Normal(0,1),
 
 p <- prefEl(data = data, priors = priors)
 
-p$addPref(BayesPref::`%>%`(1,3))
+p$addPref(prefeR::`%>%`(1,3))
 
-p$addPref(BayesPref::`%>%`(2,3))
+p$addPref(prefeR::`%>%`(2,3))
 
 expect_equal(p$suggest(), c(2,1))

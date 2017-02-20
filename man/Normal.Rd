@@ -2,7 +2,7 @@
 % Please edit documentation in R/interface.R
 \name{Normal}
 \alias{Normal}
-\title{A convinience function for generating Normal priors}
+\title{A convinience function for generating Normal priors.}
 \usage{
 Normal(mu = 0, sigma = 1)
 }
@@ -15,7 +15,7 @@ Normal(mu = 0, sigma = 1)
 A function yielding the log-PDF at x of a normal distribution with given statistics.
 }
 \description{
-A convinience function for generating Normal priors
+A convinience function for generating Normal priors.
 }
 \examples{
 Normal(0, 1)(1) == dnorm(1, log = TRUE)
@@ -23,4 +23,3 @@ Normal(0, 1)(1) == dnorm(1, log = TRUE)
 \seealso{
 Other priors: \code{\link{Exp}}, \code{\link{Flat}}
 }
-

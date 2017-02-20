@@ -27,19 +27,19 @@ expect_error(p$infer())
 # Begin testing actual preferneces with MAP estimate
 p$priors <- c(Normal(0,1), 
               Normal(0,1))
-p$addPref(BayesPref::`%>%`(1,3))
+p$addPref(prefeR::`%>%`(1,3))
 est <- p$infer()
 expect_gt(est[1], est[2])
 
-p$addPref(BayesPref::`%>%`(2,3))
+p$addPref(prefeR::`%>%`(2,3))
 est <- p$infer()
 expect_equivalent(est[1], est[2])
 
-p$addPref(BayesPref::`%=%`(1,2))
+p$addPref(prefeR::`%=%`(1,2))
 est <- p$infer()
 expect_equivalent(est[1], est[2])
 
-p$addPref(BayesPref::`%>%`(1,2))
+p$addPref(prefeR::`%>%`(1,2))
 est <- p$infer()
 expect_gt(est[1], est[2])
 
@@ -49,8 +49,8 @@ expect_gt(est[1], est[2])
 
 # Test on real dataset
 p <- prefEl(data = mtcars)
-p$addPref(BayesPref::`%>%`("Mazda RX4", "Fiat X1-9"))
-p$addPref(BayesPref::`%>%`("Mazda RX4", "Mazda RX4 Wag"))
+p$addPref(prefeR::`%>%`("Mazda RX4", "Fiat X1-9"))
+p$addPref(prefeR::`%>%`("Mazda RX4", "Mazda RX4 Wag"))
 p$priors <- sapply(rep(1.0, 11), Exp)
 expect_equal(names(p$rank()[1]), "Cadillac Fleetwood")
 

@@ -2,7 +2,7 @@
 knitr::kable(head(mtcars, 5), caption = "1974 Motor Trends Car Data")
 
 ## ---- collapse = T-------------------------------------------------------
-library(BayesPref)
+library(prefeR)
 p <- prefEl(data = mtcars)
 p
 
@@ -33,7 +33,4 @@ p$infer()
 
 ## ---- collapse = T-------------------------------------------------------
 p$rank()[1:5]
-
-## ---- collapse = T-------------------------------------------------------
-p$suggest()
 

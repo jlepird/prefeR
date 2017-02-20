@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-This vignette demonstrates how to use the ```BayesPref``` package on a real dataset. The ```mtcars``` dataset provides us such an opportunity.
+This vignette demonstrates how to use the ```prefeR``` package on a real dataset. The ```mtcars``` dataset provides us such an opportunity.
 
 ```{r, echo=FALSE, results='asis'}
 knitr::kable(head(mtcars, 5), caption = "1974 Motor Trends Car Data")
@@ -25,12 +25,12 @@ Option \#1 quickly becomes an enormous burden on the user as the number of alter
 Option \#3 is enabled by the preference elicitation package. To begin, we create a preference elicitation object and give it our data:
 
 ```{r, collapse = T}
-library(BayesPref)
+library(prefeR)
 p <- prefEl(data = mtcars)
 p
 ```
 
-Now we can add in our Bayesian priors for the weights. Although it is difficult to determine weights exactly, usually one has some ballpark estimate for what they should be, and often one knows with certainty the sign of the weights: all else equal, everyone would prefer a more fuel efficient car. The ```BayesPref``` package contains three built-in priors:
+Now we can add in our Bayesian priors for the weights. Although it is difficult to determine weights exactly, usually one has some ballpark estimate for what they should be, and often one knows with certainty the sign of the weights: all else equal, everyone would prefer a more fuel efficient car. The ```prefeR``` package contains three built-in priors:
 
 * ```Normal(mu, sigma)``` provides a one-dimensional Normal prior with mean mu and standard deviation sigma. This prior is useful if you have a good guess for what the weight should be, and an understanding of how much you expect to differ from that guess. 
 * ```Exp(mu)``` provides a one dimensional Exponential prior with mean mu (not rate!). This prior is particularly useful if you deterministically know the sign of the weight, and have a guess for the value of the weight. The mean may be negative.

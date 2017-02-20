@@ -2,7 +2,7 @@
 % Please edit documentation in R/interface.R
 \name{prefEl}
 \alias{prefEl}
-\title{A shortcut to create objects of the class BayesPrefClass}
+\title{A shortcut to create objects of the class BayesPrefClass.}
 \usage{
 prefEl(data = NA, priors = list(), ...)
 }
@@ -14,11 +14,10 @@ prefEl(data = NA, priors = list(), ...)
 \item{...}{Other parameters to pass to the class constructor. Not recommended.}
 }
 \description{
-A shortcut to create objects of the class BayesPrefClass
+A shortcut to create objects of the class BayesPrefClass.
 }
 \examples{
 p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
             priors = c(Normal(0,1), Flat()))
 help(BayesPrefClass)
 }
-
