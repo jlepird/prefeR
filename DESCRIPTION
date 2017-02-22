@@ -1,7 +1,7 @@
 Package: prefeR
 Type: Package
 Title: R Package for Pairwise Preference Elicitation
-Version: 0.1.0
+Version: 0.1.1
 Date: 2017-02-20
 Author: John Lepird
 Maintainer: John Lepird <jlepird@alum.mit.edu>

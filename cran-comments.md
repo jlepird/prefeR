@@ -9,8 +9,14 @@
 
 * This is a new release.
 
-* Note is on LICENSE, which is a standard MIT license and on https://cran.r-project.org/web/licenses/.
-
 ## Reverse dependencies
 
 This is a new release, so there are no reverse dependencies.
+
+## This is a resubmission of prefeR.
+
+Previous feedback was: 
+
+* You mis-use file LICENSE: for MIT this should only be the completed template, see <https://www.r-project.org/Licenses/MIT>.
+
+This update fixes the issue by complying with the above LICENSE policy.
