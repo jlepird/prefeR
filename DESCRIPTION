@@ -1,19 +1,17 @@
 Package: prefeR
 Type: Package
 Title: R Package for Pairwise Preference Elicitation
-Version: 0.1
-Date: 2016-05-07
+Version: 0.1.0
+Date: 2017-02-20
 Author: John Lepird
 Maintainer: John Lepird <jlepird@alum.mit.edu>
-Description: Implements the preference elicitation algorithm 
-    described in "Bayesian Preference Elicitation for Engineering Design 
-    Optimization", by Lepird, Owen, and Kochenderfer. This approach allows
-    users to derive multiobjective weights from pairwise comparisons, which
-    research shows is more repeatable, transparent, and intuitive than 
-    directly defining weights.
+Description: Allows users to derive multi-objective weights from pairwise comparisons, which
+    research shows is more repeatable, transparent, and intuitive other techniques. These weights
+    can be rank existing alternatives or to define a multi-objective utility function for optimization.
 License: MIT + file LICENSE
 Imports: mcmc, methods, entropy
 Suggests:
     testthat, knitr, rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.0
+Encoding: UTF-8
