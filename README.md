@@ -1,6 +1,7 @@
 ### Package Status
 [![Build Status](https://travis-ci.org/jlepird/prefeR.png)](https://travis-ci.org/jlepird/prefeR)
 [![codecov.io](https://codecov.io/gh/jlepird/prefeR/coverage.svg?branch=master)](https://codecov.io/gh/jlepird/prefeR?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/prefeR)](https://cran.r-project.org/package=prefeR)
 
 ### What is preference elicitation?
 Most real-world decisions must reconcile multiple, competing objectives. In buying a car, you might be concerned about cost, reliability, and performance, but before you can make a decision, you must establish the relative importance of these goals. A common mathematical approach to this problem is to define weights for each of these objectives. Although you might have a ballpark intuition for the weights, it is difficult to set them in a repeatable and defendable manner. 
@@ -10,10 +11,9 @@ Preference elicitation relieves some of this burden. Instead of determining the 
 Technical details about how this package works can be found in the article [here](http://arc.aiaa.org/doi/abs/10.2514/1.I010363). 
 
 ### Installation
-This package is not yet added to CRAN, but you can install it directly from Github with the ```devtools``` package. 
+This package is on CRAN, so you can install it directly through `install.packages()`.  
 ```R
-library(devtools)
-install_github("jlepird/prefeR")
+install.packages("prefeR")
 ```
 
 ### Examples
