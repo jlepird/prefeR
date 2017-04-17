@@ -44,6 +44,6 @@ p$addPref(1 %=% 2)
 p$infer()   # maintains belief that 1 and 2 are equal
 p$rank()    # calculates the value of all three alternatives
 ```
-## More Exampes
+## More Examples
 
 [Choosing a car from the `mtcars` dataset](https://jlepird.github.io/prefeR/inst/doc/mtcars.html)
