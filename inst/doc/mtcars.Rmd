@@ -1,6 +1,6 @@
 ---
 title: "Preference Elicitation on Motor Trends Dataset"
-author: "Jack Lepird"
+author: "John Lepird"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
