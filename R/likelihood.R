@@ -15,6 +15,9 @@
 }
 
 #' Evaluates the likelihood of the observed strict preferences
+#' @param x the underlying data
+#' @param pref the stated preference
+#' @param p the preference elication object
 #' @importFrom stats pnorm
 .getLogStrictProb <- function(x, pref, p){
   d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])
@@ -24,6 +27,9 @@
 }
 
 #' Evaluates the likelihood of the observed indifference preferences
+#' @param x the underlying data
+#' @param pref the stated preference
+#' @param p the preference elication object
 #' @importFrom stats pnorm
 .getLogIndifProb <- function(x, pref, p){
   d <- as.matrix(p$data[pref[[1]], ] - p$data[pref[[2]], ])

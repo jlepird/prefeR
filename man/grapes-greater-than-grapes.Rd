@@ -9,7 +9,7 @@ a \%>\% b
 \arguments{
 \item{a}{The preferred row}
 
-\item{b}{The nonpreferred row}
+\item{b}{The non-preferred row}
 }
 \description{
 A helper function to add in preferences in a user-friendly way.
@@ -18,5 +18,8 @@ A helper function to add in preferences in a user-friendly way.
 1 \%>\% 2 # prefer row 1 to row 2
 }
 \seealso{
-Other preferences: \code{\link{\%<\%}}, \code{\link{\%=\%}}
+Other preferences: 
+\code{\link{\%<\%}()},
+\code{\link{\%=\%}()}
 }
+\concept{preferences}

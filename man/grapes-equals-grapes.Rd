@@ -18,5 +18,8 @@ A helper function to add in preferences in a user-friendly way.
 1 \%=\% 2 # indifferent between 1 and 2
 }
 \seealso{
-Other preferences: \code{\link{\%<\%}}, \code{\link{\%>\%}}
+Other preferences: 
+\code{\link{\%<\%}()},
+\code{\link{\%>\%}()}
 }
+\concept{preferences}

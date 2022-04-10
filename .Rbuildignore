@@ -3,3 +3,6 @@
 ^\.Rproj\.user$
 ^\.travis
 ^cran-comments\.md$
+^.github/
+^doc$
+^Meta$

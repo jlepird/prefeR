@@ -20,7 +20,7 @@ An object containing all data necessary for preference elicitation.
 
 \item{\code{strict}}{A list of lists of preferences. For each element x, x[[1]] > x[[2]].}
 
-\item{\code{indif}}{A list of lists of indifferences. For each element x, x[[1]] = x[[2]].}
+\item{\code{indif}}{A list of lists of indifference preferences. For each element x, x[[1]] = x[[2]].}
 
 \item{\code{weights}}{A vector of weights determined by the inference algorithm.}
 }}
@@ -32,7 +32,7 @@ An object containing all data necessary for preference elicitation.
 
 \item{\code{infer(estimate = "recommended")}}{Calls the ``infer'' function to guess weights}
 
-\item{\code{rank()}}{Calculates the utilty of each row in our dataset}
+\item{\code{rank()}}{Calculates the utility of each row in our dataset}
 
 \item{\code{suggest(maxComparisons = 10)}}{Calls the ``suggest'' function to guess weights}
 }}

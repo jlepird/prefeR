@@ -1,7 +1,7 @@
-#' Suggests a good comparision for the user to make next. 
+#' Suggests a good comparison for the user to make next. 
 #' @export
 #' @param p An object of class BayesPrefClass.
-#' @param maxComparisons The maximum number of possible comparisions to check. Default: 10. 
+#' @param maxComparisons The maximum number of possible comparisons to check. Default: 10. 
 #' @return A two-element vector of recommended comparisons.
 suggest <- function(p, maxComparisons = 10){
   
@@ -44,7 +44,7 @@ suggest <- function(p, maxComparisons = 10){
 }
 
 #' Calculates the expected posterior entropy of the prefel object if x and y are compared. Ignores 
-#' the odds of indifference preferences, as using them would increase runtime 50% without much gain.
+#' the odds of indifference preferences, as using them would increase runtime 50\% without much gain.
 #' @param x Possible comparison 1
 #' @param y Possible comparison 2
 #' @param p An object of class BayesPrefClass.

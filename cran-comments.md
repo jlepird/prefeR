@@ -1,22 +1,30 @@
 ## Test environments
-* local OS X install, R 3.3.2
-* ubuntu 12.04 (on travis-ci), R 3.3.2
-* win-builder (devel and release)
+
+-   ubuntu-latest, R-4.1.3 and R-devel
+-   macos-latest, R-4.1.3 and R-devel
+-   windows-latest, R-4.1.3 and R-devel
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+Ubuntu/MacOS (All R-versions) and Windows (R-4.1.3):
 
-* This is a new release.
+    0 errors | 0 warnings | 0 note
+
+Windows (R-devel): 
+
+```
+0 errors | 1 warnings | 0 note
+
+Warning: package 'mcmc' was built under R version 4.1.3
+See 'C:/Users/USERuQGXYhMLJB/prefeR.Rcheck/00install.out' for details
+```
+
+The "mcmc" package is one of this package's dependencies which was not automatically rebuilt under the R-development image.
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+As of submission, no other packages list this as a dependency.
 
-## This is a resubmission of prefeR.
+## This is a minor update of prefeR.
 
-Previous feedback was: 
-
-* You mis-use file LICENSE: for MIT this should only be the completed template, see <https://www.r-project.org/Licenses/MIT>.
-
-This update fixes the issue by complying with the above LICENSE policy.
+This change updates the existing package to work with R version 4.1.3 and higher.
