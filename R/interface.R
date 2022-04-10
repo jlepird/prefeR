@@ -103,10 +103,12 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
                        },
                        rank = function(){
                          "Calculates the utilty of each row in our dataset"
-                         is.na(data) && stop("No data supplied")
+                         any(is.na(data)) && stop("No data supplied, or data contains NA")
                          
                          # Calculate weights if we don't already have them
-                         is.na(weights) && infer()
+                         if (any(is.na(weights))) {
+                           infer()
+                         }
                          utilities <- apply(data, 1, # over rows
                                             function(x){
                                               weights %*% x
