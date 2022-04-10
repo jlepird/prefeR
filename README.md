@@ -1,5 +1,5 @@
 ### Package Status
-[![Build Status](https://travis-ci.org/jlepird/prefeR.png)](https://travis-ci.org/jlepird/prefeR)
+[![R](https://github.com/jlepird/prefeR/actions/workflows/r.yml/badge.svg)](https://github.com/jlepird/prefeR/actions/workflows/r.yml)
 [![codecov.io](https://codecov.io/gh/jlepird/prefeR/coverage.svg?branch=master)](https://codecov.io/gh/jlepird/prefeR?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/prefeR)](https://cran.r-project.org/package=prefeR)
 
