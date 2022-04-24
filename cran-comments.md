@@ -6,20 +6,8 @@
 
 ## R CMD check results
 
-Ubuntu/MacOS (All R-versions) and Windows (R-4.1.3):
-
+All Configurations:
     0 errors | 0 warnings | 0 note
-
-Windows (R-devel): 
-
-```
-0 errors | 1 warnings | 0 note
-
-Warning: package 'mcmc' was built under R version 4.1.3
-See 'C:/Users/USERuQGXYhMLJB/prefeR.Rcheck/00install.out' for details
-```
-
-The "mcmc" package is one of this package's dependencies which was not automatically rebuilt under the R-development image.
 
 ## Reverse dependencies
 

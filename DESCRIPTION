@@ -1,8 +1,8 @@
 Package: prefeR
 Type: Package
 Title: R Package for Pairwise Preference Elicitation
-Version: 0.1.2
-Date: 2022-04-10
+Version: 0.1.3
+Date: 2022-04-24
 Author: John Lepird
 Maintainer: John Lepird <jlepird@alum.mit.edu>
 Description: Allows users to derive multi-objective weights from pairwise comparisons, which
