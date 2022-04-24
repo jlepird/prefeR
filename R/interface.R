@@ -125,7 +125,6 @@ BayesPrefClass <- setRefClass("BayesPrefClass",
 #' @examples 
 #' p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
 #'             priors = c(Normal(0,1), Flat()))
-#' help(BayesPrefClass)
 #' @param data A matrix or dataframe of data. Each column should be a variable, each row an observation.
 #' @param priors A list of functions that give the prior on each variable. E.g. see help(Flat)
 #' @param  ... Other parameters to pass to the class constructor. Not recommended. 

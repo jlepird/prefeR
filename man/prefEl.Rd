@@ -19,5 +19,4 @@ A shortcut to create objects of the class BayesPrefClass.
 \examples{
 p <- prefEl(data = data.frame(x = c(1,0,1), y = c(0, 1, 1)),
             priors = c(Normal(0,1), Flat()))
-help(BayesPrefClass)
 }

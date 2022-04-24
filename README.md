@@ -20,6 +20,8 @@ install.packages("prefeR")
 ```R
 library(prefeR)
 
+Sys.sleep(20)
+
 # Each column of data is a variable, i.e. objective, 
 # and each row is an alternative.
 p <- prefEl(data = data.frame(x = c(1, 0, 1), 
@@ -45,4 +47,4 @@ p$rank()    # calculates the value of all three alternatives
 ```
 ## More Examples
 
-[Choosing a car from the `mtcars` dataset](https://jlepird.github.io/prefeR/docs/mtcars.html)
+[Choosing a car from the `mtcars` dataset](https://jlepird.github.io/prefeR/articles/mtcars.html)
