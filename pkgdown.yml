@@ -3,7 +3,7 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   mtcars: mtcars.html
-last_built: 2022-04-24T22:31Z
+last_built: 2022-04-24T22:53Z
 urls:
   reference: https://jlepird.github.io/prefeR/reference
   article: https://jlepird.github.io/prefeR/articles
