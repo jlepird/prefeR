@@ -224,21 +224,21 @@
 <p>Now, we can infer what our attribute weights should be:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span><span class="op">$</span><span class="fu">infer</span><span class="op">(</span><span class="op">)</span>
-<span class="co">##         mpg         cyl        disp          hp        drat          wt </span>
-<span class="co">##  0.06578172 -0.03143432  0.39021759  0.48443262 -0.13523098 -0.18486644 </span>
-<span class="co">##        qsec          vs          am        gear        carb </span>
-<span class="co">## -0.28693534  0.13071126  0.27604740  0.24542640  0.51641730</span></code></pre></div>
+<span class="co">##          mpg          cyl         disp           hp         drat           wt </span>
+<span class="co">##  0.000000000  0.005892875  0.473346403  0.000000000 -0.001473219 -0.286931232 </span>
+<span class="co">##         qsec           vs           am         gear         carb </span>
+<span class="co">## -0.284793197 -0.001473219 -0.001473219 -0.001473219  0.001473219</span></code></pre></div>
 <p>And we can get our top five cars:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span><span class="op">$</span><span class="fu">rank</span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
-<span class="co">##       Maserati Bora Lincoln Continental   Chrysler Imperial  Cadillac Fleetwood </span>
-<span class="co">##            280.7822            280.3661            280.2094            280.2001 </span>
-<span class="co">##      Ford Pantera L </span>
-<span class="co">##            263.8960</span></code></pre></div>
+<span class="co">##  Cadillac Fleetwood Lincoln Continental   Chrysler Imperial    Pontiac Firebird </span>
+<span class="co">##            216.8368            211.1522            201.8215            183.4207 </span>
+<span class="co">##          Duster 360 </span>
+<span class="co">##            164.9131</span></code></pre></div>
 <p>Finally, we can figure out what query we should answer next:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span><span class="op">$</span><span class="fu">suggest</span><span class="op">(</span><span class="op">)</span>
-<span class="co">## [1] "Merc 450SLC" "Duster 360"</span></code></pre></div>
+<span class="co">## [1] "Merc 240D"  "Datsun 710"</span></code></pre></div>
   </main>
 </div>
 
