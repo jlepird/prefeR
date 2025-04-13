@@ -1,69 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jlepird.github.io/prefeR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/articles/mtcars.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/BayesPrefClass.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/Exp.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/Flat.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/Normal.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/dot-calculateLogProb.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/dot-estimateEntropy.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/dot-getLogIndifProb.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/dot-getLogStrictProb.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/dot-sampleEntropy.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/grapes-equals-grapes.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/grapes-greater-than-grapes.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/grapes-less-than-grapes.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/infer.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/prefEl.html</loc>
-  </url>
-  <url>
-    <loc>https://jlepird.github.io/prefeR/reference/suggest.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jlepird.github.io/prefeR/404.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/LICENSE-text.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/articles/index.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/articles/mtcars.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/authors.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/index.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/BayesPrefClass.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/Exp.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/Flat.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/Normal.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/dot-calculateLogProb.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/dot-estimateEntropy.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/dot-getLogIndifProb.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/dot-getLogStrictProb.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/dot-sampleEntropy.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/grapes-equals-grapes.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/grapes-greater-than-grapes.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/grapes-less-than-grapes.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/index.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/infer.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/prefEl.html</loc></url>
+<url><loc>https://jlepird.github.io/prefeR/reference/suggest.html</loc></url>
 </urlset>
+
