@@ -1,6 +1,7 @@
 ### Package Status
 [![R](https://github.com/jlepird/prefeR/actions/workflows/r.yml/badge.svg?branch=master)](https://github.com/jlepird/prefeR/actions/workflows/r.yml)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/prefeR)](https://cran.r-project.org/package=prefeR)
+[![](https://cranlogs.r-pkg.org/badges/prefeR)](https://cran.r-project.org/package=prefeR)
 
 ### What is preference elicitation?
 Most real-world decisions must reconcile multiple, competing objectives. In buying a car, you might be concerned about cost, reliability, and performance, but before you can make a decision, you must establish the relative importance of these goals. A common mathematical approach to this problem is to define weights for each of these objectives. Although you might have a ballpark intuition for the weights, it is difficult to set them in a repeatable and defendable manner. 
