@@ -1,5 +1,3 @@
-library(mcmc)
-
 #' A function that estimates the user's underlying utility function. 
 #' @examples
 #'  p <- prefEl(data = data.frame(c(1,0,1), c(0,1,1), c(1,1,1)),
